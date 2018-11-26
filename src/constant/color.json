@@ -1,0 +1,8 @@
+{
+  "background": "#FF0000",
+  "text": "#F8F8F8",
+  "shadow": "#000000",
+  "border": "#DDDDDD",
+  "border_btn": "#000000",
+  "error_text": "#FF0000"
+}
