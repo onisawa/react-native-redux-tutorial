@@ -1,4 +1,8 @@
-import { SELECT_LIBRARY, EMAIL_CHANGED } from './types';
+import {
+  SELECT_LIBRARY,
+  EMAIL_CHANGED,
+  PASSWORD_CHANGED
+} from './types';
 
 export const selectLibrary = (libraryId) => ({
   type: SELECT_LIBRARY,
@@ -7,5 +11,10 @@ export const selectLibrary = (libraryId) => ({
 
 export const emailChanged = (text) => ({
   type: EMAIL_CHANGED,
+  payload: text
+});
+
+export const passwordChanged = (text) => ({
+  type: PASSWORD_CHANGED,
   payload: text
 });
