@@ -18,7 +18,7 @@ class ListItem extends Component {
     UIManager.setLayoutAnimationEnabledExperimental
       && UIManager.setLayoutAnimationEnabledExperimental(true)
 
-    LayoutAnimation.spring();
+    LayoutAnimation.linear();
   }
 
   renderDescription() {
