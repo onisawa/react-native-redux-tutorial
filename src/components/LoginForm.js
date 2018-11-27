@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 
 import { emailChanged, passwordChanged, loginUser } from '../actions';
-import { Card, CardSection, Input, Button } from './common';
+import { Card, CardSection, Input, Button, Spinner } from './common';
 import t from '../constant/text.json';
 import c from '../constant/color.json';
 
@@ -23,7 +23,7 @@ class LoginForm extends Component {
   }
 
   renderError() {
-    const { error } = this.props
+    const { error } = this.props;
 
     if (error) {
       return (
@@ -34,6 +34,20 @@ class LoginForm extends Component {
         </View>
       );
     }
+  }
+
+  renderButton() {
+    const { isLoading } = this.props;
+
+    if (isLoading) {
+      return <Spinner size="large" />;
+    }
+
+    return (
+      <Button onPress={this.onButtonPress.bind(this)}>
+        {t.login}
+      </Button>
+    );
   }
 
   render() {
@@ -61,9 +75,7 @@ class LoginForm extends Component {
         </CardSection>
         {this.renderError()}
         <CardSection>
-          <Button onPress={this.onButtonPress.bind(this)}>
-            {t.login}
-          </Button>
+          {this.renderButton()}
         </CardSection>
       </Card>
     );
@@ -81,7 +93,8 @@ const styles = {
 const mapStateToProps = state => ({
   email: state.auth.email,
   password: state.auth.password,
-  error: state.auth.error
+  error: state.auth.error,
+  isLoading: state.auth.isLoading
 });
 
 export default connect(mapStateToProps, {
