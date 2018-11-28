@@ -2,5 +2,7 @@
   "app_header": "Tech Stack",
   "email": "Email",
   "password": "Password",
-  "login": "Login"
+  "login": "Login",
+  "login_title": "Please Login",
+  "employee_list_title": "Employees"
 }

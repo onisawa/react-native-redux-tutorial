@@ -9,6 +9,7 @@ import reducers from './reducers';
 // import t from './constant/text.json';
 // import LibraryList from './components/LibraryList';
 import LoginForm from './components/LoginForm';
+import Router from './Router';
 
 class App extends Component {
   componentWillMount() {
@@ -29,7 +30,7 @@ class App extends Component {
 
     return (
       <Provider store={store}>
-          <LoginForm />
+          <Router />
       </Provider>
     );
   }
