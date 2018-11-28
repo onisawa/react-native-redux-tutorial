@@ -21,6 +21,7 @@ const RouterComponent = () => (
           key="employeeList"
           component={EmployeeList}
           title={t.employee_list_title}
+          initial
         />
         <Scene
           key="employeeCreate"

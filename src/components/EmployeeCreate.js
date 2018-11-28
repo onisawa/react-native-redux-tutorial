@@ -1,12 +1,32 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+
+import { Card, CardSection, Input, Button } from './common';
+import t from '../constant/text.json';
 
 class EmployeeCreate extends Component {
   render() {
     return (
-      <View>
-        <Text>Employee Form</Text>
-      </View>
+      <Card>
+        <CardSection>
+          <Input
+            label={t.employee_name}
+            placeholder="Big"
+          />
+        </CardSection>
+
+        <CardSection>
+          <Input
+            label={t.employee_phone}
+            placeholder="555-555-5555"
+          />
+        </CardSection>
+
+        <CardSection>
+          <Button>
+            {t.save_btn}
+          </Button>
+        </CardSection>
+      </Card>
     );
   }
 }
