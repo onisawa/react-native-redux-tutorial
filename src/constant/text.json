@@ -1,13 +1,23 @@
 {
   "app_header": "Tech Stack",
+
   "email": "Email",
   "password": "Password",
   "login": "Login",
   "login_title": "Please Login",
+
   "employee_list_title": "Employees",
   "employee_list_right_title": "Add",
   "employee_create_title": "Create Employee",
   "employee_name": "Name",
   "employee_phone": "Phone",
-  "save_btn": "Save"
+  "save_btn": "Save",
+
+  "monday": "Monday",
+  "tuesday": "Tuesday",
+  "wednesday": "Wednesday",
+  "thursday": "Thursday",
+  "friday": "Friday",
+  "saturday": "Saturday",
+  "sunday": "Sunday"
 }
