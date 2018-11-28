@@ -3,8 +3,8 @@ import { View } from 'react-native';
 
 import color from '../../constant/color.json';
 
-const CardSection = ({ children }) => (
-  <View style={styles.containerStyle}>
+const CardSection = ({ children, style }) => (
+  <View style={[styles.containerStyle, style]}>
     {children}
   </View>
 );

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Picker } from 'react-native';
+import { Picker, Text } from 'react-native';
 
 import { employeeUpdate } from '../actions';
 import { Card, CardSection, Input, Button } from './common';
 import t from '../constant/text.json';
+import c from '../constant/color.json';
 
 class EmployeeCreate extends Component {
   renderShiftPicker() {
@@ -18,7 +19,7 @@ class EmployeeCreate extends Component {
       t.sunday,
     ];
 
-    return shiftDay.map(day => <Picker.Item label={day} value={day} />);
+    return shiftDay.map(day => <Picker.Item key={day} label={day} value={day} />);
   }
 
   render() {
@@ -44,9 +45,9 @@ class EmployeeCreate extends Component {
           />
         </CardSection>
 
-        <CardSection>
+        <CardSection style={{ flexDirection: 'column' }}>
+          <Text style={styles.pickerLabelStyle}>{t.employee_shift}</Text>
           <Picker
-            style={{ flex: 1 }}
             selectedValue={this.props.shift}
             onValueChange={value => this.props.employeeUpdate({ prop: 'shift', value })}
           >
@@ -63,6 +64,14 @@ class EmployeeCreate extends Component {
     );
   }
 }
+
+const styles = {
+  pickerLabelStyle: {
+    fontSize: 18,
+    paddingLeft: 20,
+    color: c.text
+  }
+};
 
 const mapStateToProps = (state) => {
   const { name, phone, shift } = state.employeeForm;
