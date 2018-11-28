@@ -4,5 +4,7 @@
   "password": "Password",
   "login": "Login",
   "login_title": "Please Login",
-  "employee_list_title": "Employees"
+  "employee_list_title": "Employees",
+  "employee_list_right_title": "Add",
+  "employee_create_title": "Create Employee"
 }
