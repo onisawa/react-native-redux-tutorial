@@ -9,20 +9,20 @@ import {
 import { connect } from 'react-redux';
 
 import { CardSection } from './common';
-import color from '../constant/color.json'
+import color from '../constant/color.json';
 import * as actions from '../actions';
 
 class ListItem extends Component {
   componentWillUpdate() {
     const { UIManager } = NativeModules;
     UIManager.setLayoutAnimationEnabledExperimental
-      && UIManager.setLayoutAnimationEnabledExperimental(true)
+      && UIManager.setLayoutAnimationEnabledExperimental(true);
 
-    LayoutAnimation.spring();
+    LayoutAnimation.linear();
   }
 
   renderDescription() {
-    const { library, expanded } = this.props
+    const { library, expanded } = this.props;
 
     if (expanded) {
       return (
@@ -36,8 +36,8 @@ class ListItem extends Component {
   }
 
   render() {
-    const { titleStyle } = styles
-    const { id, title } = this.props.library
+    const { titleStyle } = styles;
+    const { id, title } = this.props.library;
     return (
       <TouchableWithoutFeedback
         onPress={() => this.props.selectLibrary(id)}
