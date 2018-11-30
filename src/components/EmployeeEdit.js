@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-import { employeeUpdate } from '../actions';
+import { employeeUpdate, employeeEdit } from '../actions';
 import { Card, CardSection, Button } from './common';
 import EmployeeForm from './EmployeeForm';
 
 import t from '../constant/text.json';
 import { shiftDay } from '../constant/day';
 
-class EmployeeEdit extends Component {
+class EmployeeEditPage extends Component {
   componentWillMount() {
     _.each(this.props.employee, (value, prop) => {
       this.props.employeeUpdate({ prop, value });
@@ -19,7 +19,12 @@ class EmployeeEdit extends Component {
   onButtonPress() {
     const { name, phone, shift } = this.props;
 
-    this.props.employeeCreate({ name, phone, shift: shift || shiftDay[0] });
+    this.props.employeeEdit({
+      name,
+      phone,
+      shift: shift || shiftDay[0],
+      uid: this.props.employee.uid
+    });
   }
 
   render() {
@@ -43,5 +48,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-  { employeeUpdate }
-)(EmployeeEdit);
+  { employeeUpdate, employeeEdit }
+)(EmployeeEditPage);

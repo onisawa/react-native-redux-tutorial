@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Picker, Text, View } from 'react-native';
 
-import { employeeUpdate, employeeCreate } from '../actions';
+import { employeeUpdate, resetForm } from '../actions';
 import { CardSection, Input } from './common';
 
 import t from '../constant/text.json';
@@ -10,6 +10,10 @@ import c from '../constant/color.json';
 import { shiftDay } from '../constant/day';
 
 class EmployeeForm extends Component {
+  componentWillUnmount() {
+    this.props.resetForm();
+  }
+
   renderShiftPicker() {
     return shiftDay.map(day => <Picker.Item key={day} label={day} value={day} />);
   }
@@ -66,5 +70,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-  { employeeUpdate, employeeCreate }
+  { employeeUpdate, resetForm }
 )(EmployeeForm);
