@@ -9,7 +9,7 @@ import t from '../constant/text.json';
 import c from '../constant/color.json';
 import { shiftDay } from '../constant/day';
 
-class EmployeeCreate extends Component {
+class EmployeeForm extends Component {
   renderShiftPicker() {
     return shiftDay.map(day => <Picker.Item key={day} label={day} value={day} />);
   }
@@ -67,4 +67,4 @@ const mapStateToProps = (state) => {
 export default connect(
   mapStateToProps,
   { employeeUpdate, employeeCreate }
-)(EmployeeCreate);
+)(EmployeeForm);
