@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import { text } from 'react-native-communications';
 
 import { employeeUpdate, employeeEdit } from '../actions';
 import { Card, CardSection, Button } from './common';
@@ -27,6 +28,12 @@ class EmployeeEditPage extends Component {
     });
   }
 
+  onTextPress() {
+    const { phone, shift } = this.props;
+
+    text(phone, `Your upcoming shift is on ${shift}`);
+  }
+
   render() {
     return (
       <Card>
@@ -34,6 +41,12 @@ class EmployeeEditPage extends Component {
         <CardSection>
           <Button onPress={this.onButtonPress.bind(this)}>
             {t.save_btn}
+          </Button>
+        </CardSection>
+
+        <CardSection>
+          <Button onPress={this.onTextPress.bind(this)}>
+            {t.texting_btn}
           </Button>
         </CardSection>
       </Card>
