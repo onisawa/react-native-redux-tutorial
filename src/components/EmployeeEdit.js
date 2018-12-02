@@ -37,7 +37,7 @@ class EmployeeEditPage extends Component {
   }
 
   onAccept() {
-    this.props.employeeDelete({ uid: this.props.employee.uid })
+    this.props.employeeDelete({ uid: this.props.employee.uid });
   }
 
   onDecline() {
