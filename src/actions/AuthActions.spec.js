@@ -4,15 +4,39 @@ import firebase from '@firebase/app';
 import '@firebase/auth';
 
 import { selectLibrary, emailChanged, passwordChanged, loginUser } from './AuthActions';
-import { SELECT_LIBRARY, EMAIL_CHANGED, PASSWORD_CHANGED, LOGIN_USER } from './types';
+import {
+  SELECT_LIBRARY,
+  EMAIL_CHANGED,
+  PASSWORD_CHANGED,
+  LOGIN_USER,
+  LOGIN_USER_SUCCESS,
+  LOGIN_USER_FAIL
+} from './types';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
-const store = mockStore();
+let store;
 const text = 'hello';
 const password = '1234';
+const user1 = {
+  email: text,
+  password
+};
+const user2 = {
+  email: 'text',
+  password: 'password'
+};
+const user3 = {
+  email: 'password',
+  password: 'text'
+};
+const returnedUser = { 'name': 'user' };
 
 describe('Auth Actions', () => {
+  beforeEach(() => {
+    store = mockStore();
+  });
+
   it('select library', () => {
     store.dispatch(selectLibrary(1));
 
@@ -44,9 +68,37 @@ describe('Auth Actions', () => {
   });
 
   describe('user login', () => {
-    it('login success', () => {
-      store.dispatch(loginUser(text, password));
+    it('login success', async () => {
+      store.dispatch(loginUser(user1));
+
+      await firebase;
       
+      const actions = store.getActions();
+      expect(actions).toContainEqual({
+        type: LOGIN_USER,
+      });
+      expect(actions).toContainEqual({
+        type: LOGIN_USER_SUCCESS,
+        payload: returnedUser
+      });
+    });
+
+    it('login failed but can create', async () => {
+      store.dispatch(loginUser(user2));
+
+      await firebase;
+
+      const actions = store.getActions();
+      expect(actions).toContainEqual({
+        type: LOGIN_USER,
+      });
+    });
+
+    it('login failed and cant create', async () => {
+      store.dispatch(loginUser(user3));
+
+      await firebase;
+
       const actions = store.getActions();
       expect(actions).toContainEqual({
         type: LOGIN_USER,
