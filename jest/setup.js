@@ -16,3 +16,6 @@ jest.mock('@firebase/app', () => ({
 }));
 
 jest.mock('@firebase/auth', () => {});
+
+jest.mock('@firebase/database', () => {});
+
