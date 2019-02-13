@@ -34,6 +34,7 @@
     "transformIgnorePatterns": [
       "node_modules/(?!react-native)/.+",
       "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@shoutem|native-base/node_modules/react-native-vector-icons)/"
-    ]
+    ],
+    "setupFiles": ["<rootDir>/jest/setup.js"]
   }
 }
