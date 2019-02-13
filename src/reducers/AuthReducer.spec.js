@@ -10,8 +10,12 @@ const INITIAL_STATE = {
 };
 
 describe('Auth Reducer', () => {
-  it('return initial state', () => {
+  it('return inital state', () => {
     expect(reducer(undefined, {})).toEqual(INITIAL_STATE);
+  });
+
+  it('return inital state', () => {
+    expect(reducer(undefined, undefined)).toEqual(INITIAL_STATE);
   });
 
   it('handle email changed', () => {
