@@ -4,8 +4,8 @@ import firebase from '@firebase/app';
 import '@firebase/database';
 import '@firebase/auth';
 
-import { employeeUpdate, resetForm, employeeCreate } from './EmployeeActions';
-import { EMPLOYEE_UPDATE, EMPLOYEE_RESET_FORM, EMPLOYEE_SAVE_SUCCESS } from './types';
+import { employeeUpdate, resetForm, employeeCreate, employeeFetch } from './EmployeeActions';
+import { EMPLOYEE_UPDATE, EMPLOYEE_RESET_FORM, EMPLOYEE_SAVE_SUCCESS, EMPLOYEE_FETCH_SUCCESS } from './types';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -46,6 +46,18 @@ describe('Employee Actions', () => {
     const actions = store.getActions();
     expect(actions).toContainEqual({
       type: EMPLOYEE_SAVE_SUCCESS,
+    });
+  });
+
+  it('fetch employee', async () => {
+    store.dispatch(employeeFetch());
+
+    await firebase;
+
+    const actions = store.getActions();
+    expect(actions).toContainEqual({
+      type: EMPLOYEE_FETCH_SUCCESS,
+      payload: 'value'
     });
   });
 });
