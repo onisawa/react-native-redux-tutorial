@@ -12,7 +12,13 @@ jest.mock('@firebase/app', () => ({
       }
       reject(Error('sign up error'));
     }),
+    currentUser: { uid: '555' }
   }),
+  database: () => ({
+    ref: () => ({
+      push: () => new Promise((resolve) => resolve()),
+    })
+  })
 }));
 
 jest.mock('@firebase/auth', () => {});
