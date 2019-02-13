@@ -17,7 +17,9 @@ jest.mock('@firebase/app', () => ({
   database: () => ({
     ref: () => ({
       push: () => new Promise((resolve) => resolve()),
-      on: (eventType, callback) => callback({ val: () => 'value' })
+      on: (eventType, callback) => callback({ val: () => 'value' }),
+      set: () => new Promise((resolve) => resolve()),
+      remove: () => new Promise((resolve) => resolve()),
     })
   })
 }));
