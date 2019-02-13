@@ -1,5 +1,7 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import firebase from '@firebase/app';
+import '@firebase/auth';
 
 import { selectLibrary, emailChanged, passwordChanged, loginUser } from './AuthActions';
 import { SELECT_LIBRARY, EMAIL_CHANGED, PASSWORD_CHANGED, LOGIN_USER } from './types';
