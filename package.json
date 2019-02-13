@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "dependencies": {
     "firebase": "^5.5.9",
@@ -23,9 +23,17 @@
     "eslint-config-rallycoding": "^3.2.0",
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "0.49.2",
-    "react-test-renderer": "16.6.1"
+    "react-test-renderer": "16.6.1",
+    "redux-mock-store": "^1.5.3"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-native)/.+",
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@shoutem|native-base/node_modules/react-native-vector-icons)/"
+    ]
   }
 }
