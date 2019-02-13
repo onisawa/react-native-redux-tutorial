@@ -30,7 +30,7 @@ const user3 = {
   email: 'password',
   password: 'text'
 };
-const returnedUser = { 'name': 'user' };
+const returnedUser = { name: 'user' };
 
 describe('Auth Actions', () => {
   beforeEach(() => {
