@@ -30,7 +30,8 @@ jest.mock('@firebase/database', () => {});
 
 jest.mock('react-native-router-flux', () => ({
   Actions: {
-    main: jest.fn().mockReturnValue(true),
+    main: jest.fn(),
+    pop: jest.fn()
   }
 }));
 

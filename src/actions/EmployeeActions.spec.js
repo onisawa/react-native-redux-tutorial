@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import firebase from '@firebase/app';
 import '@firebase/database';
 import '@firebase/auth';
+import { Actions } from 'react-native-router-flux';
 
 import { employeeUpdate, resetForm, employeeCreate, employeeFetch, employeeEdit, employeeDelete } from './EmployeeActions';
 import { EMPLOYEE_UPDATE, EMPLOYEE_RESET_FORM, EMPLOYEE_SAVE_SUCCESS, EMPLOYEE_FETCH_SUCCESS } from './types';
@@ -25,6 +26,7 @@ describe('Employee Actions', () => {
     store.dispatch(employeeUpdate(form));
 
     const actions = store.getActions();
+
     expect(actions).toContainEqual({
       type: EMPLOYEE_UPDATE,
       payload: form,
@@ -35,6 +37,7 @@ describe('Employee Actions', () => {
     store.dispatch(resetForm());
 
     const actions = store.getActions();
+
     expect(actions).toContainEqual({
       type: EMPLOYEE_RESET_FORM,
     });
@@ -45,10 +48,13 @@ describe('Employee Actions', () => {
 
     await firebase;
 
+    const spy = jest.spyOn(Actions, 'pop');
     const actions = store.getActions();
+
     expect(actions).toContainEqual({
       type: EMPLOYEE_SAVE_SUCCESS,
     });
+    expect(spy).toBeCalled();
   });
 
   it('fetch employee', async () => {
@@ -56,11 +62,14 @@ describe('Employee Actions', () => {
 
     await firebase;
 
+    const spy = jest.spyOn(Actions, 'pop');
     const actions = store.getActions();
+
     expect(actions).toContainEqual({
       type: EMPLOYEE_FETCH_SUCCESS,
       payload: 'value'
     });
+    expect(spy).toBeCalled();
   });
 
   it('edit employee', async () => {
@@ -68,10 +77,13 @@ describe('Employee Actions', () => {
 
     await firebase;
 
+    const spy = jest.spyOn(Actions, 'pop');
     const actions = store.getActions();
+
     expect(actions).toContainEqual({
       type: EMPLOYEE_SAVE_SUCCESS,
     });
+    expect(spy).toBeCalled();
   });
 
   it('remove employee', async () => {
@@ -79,9 +91,12 @@ describe('Employee Actions', () => {
 
     await firebase;
 
+    const spy = jest.spyOn(Actions, 'pop');
     const actions = store.getActions();
+
     expect(actions).toContainEqual({
       type: EMPLOYEE_SAVE_SUCCESS,
     });
+    expect(spy).toBeCalled();
   });
 });
