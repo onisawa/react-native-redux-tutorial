@@ -14,7 +14,7 @@ describe('Auth Reducer', () => {
     expect(reducer(undefined, {})).toEqual(INITIAL_STATE);
   });
 
-  it('return inital state', () => {
+  it('both undefined', () => {
     expect(reducer(undefined, undefined)).toEqual(INITIAL_STATE);
   });
 
