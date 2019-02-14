@@ -12,6 +12,7 @@ import {
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL
 } from './types';
+import { Actions } from 'react-native-router-flux';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -69,6 +70,7 @@ describe('Auth Actions', () => {
 
   describe('user login', () => {
     it('login success', async () => {
+      const spy = jest.spyOn(Actions, 'main');
       store.dispatch(loginUser(user1));
 
       await firebase;
@@ -81,6 +83,7 @@ describe('Auth Actions', () => {
         type: LOGIN_USER_SUCCESS,
         payload: returnedUser
       });
+      expect(spy).toBeCalled();
     });
 
     it('login failed but can create', async () => {
